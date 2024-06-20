@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All users</title>
+    <style>
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #04AA6D;
+            color: white;
+
+        }
+    </style>
+</head>
+
+<body>
+    <a href="http://localhost:3000/"><h3>Go Home</h3></a>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <% for( let index=0; index < result.length; index++ ) { %>
+            <tr>
+                <td style="border: 1px solid #ddd;
+  padding: 8px;">
+                    <%= result[index].id %>
+                </td>
+
+                <td style="border: 1px solid #ddd;
+  padding: 8px;">
+                    <%= result[index].username %>
+                </td>
+
+                <td style="border: 1px solid #ddd;
+  padding: 8px;">
+                    <%= result[index].email%>
+                </td>
+                <td>
+                    <form action="http://localhost:3000/user/<%= result[index].id%>/edit" method="GET"><button>Edit username </button></form>
+                </td>
+                <td>
+                    <form action="http://localhost:3000/user/<%= result[index].id%>?_method=DELETE" method="post">
+                        <button>Delete Account</button></form>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+</body>
+
+</html>
